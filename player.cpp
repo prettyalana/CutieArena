@@ -48,6 +48,7 @@ Time Player::getLastHitTime()
 {
     return m_LastHit;
 }
+
 bool Player::hit(Time timeHit)
 {
     if (timeHit.asMilliseconds() - m_LastHit.asMilliseconds() > 200)
@@ -60,4 +61,29 @@ bool Player::hit(Time timeHit)
     {
         return false;
     }
+}
+
+FloatRect Player::getPosition()
+{
+    return m_Sprite.getGlobalBounds();
+}
+
+Vector2f Player::getCenter()
+{
+    return m_Position;
+}
+
+float Player::getRotation()
+{
+    return m_Sprite.getRotation();
+}
+
+Sprite Player::getSprite()
+{
+    return m_Sprite;
+}
+
+int Player::getHealth()
+{
+    return m_Health;
 }
