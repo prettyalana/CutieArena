@@ -38,3 +38,12 @@ Player::Player()
         m_Resolution.y = resolution.y;
 
     }
+
+    void Player::resetPlayerStats()
+    {
+        m_Speed = START_SPEED;
+        m_Health = START_HEALTH;
+        m_MaxHealth = START_HEALTH;
+    }
+
+    
