@@ -9,7 +9,7 @@ Player::Player()
 {
     // Associate a texture with the sprite
     // !!Watch this space!!
-    m_Texture.loadFromFile("/Users/alana/alana-fullstackdev/CutieArena/graphics/Bearsprites copy.png");
+    m_Texture.loadFromFile("/Users/alana/alana-fullstackdev/UnBearableArena/graphics/Bearsprites copy.png");
     m_Sprite.setTexture(m_Texture);
 
     // Set the origin of the sprite to the center for smooth rotation

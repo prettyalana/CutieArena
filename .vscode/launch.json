@@ -8,7 +8,7 @@
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}/bin/",
             "environment": [],
-            "program": "/Users/alana/alana-fullstackdev/ZombieArena/bin/app",
+            "program": "/Users/alana/alana-fullstackdev/UnBearableArena/bin/app",
             "MIMode": "lldb",
             "targetArchitecture": "arm64",
             "externalConsole": false
