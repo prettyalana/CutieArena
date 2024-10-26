@@ -85,7 +85,7 @@ int main()
             {
                 window.close();
             }
-            // Handle WASD while playing 
+            // Handle WASD while playing
             if (state == State::PLAYING)
             {
                 // Handle the pressing and releasing of WASD keys
@@ -93,7 +93,7 @@ int main()
                 {
                     player.moveUp();
                 }
-                else 
+                else
                 {
                     player.stopUp();
                 }
@@ -101,7 +101,7 @@ int main()
                 {
                     player.moveDown();
                 }
-                else 
+                else
                 {
                     player.stopDown();
                 }
@@ -109,7 +109,7 @@ int main()
                 {
                     player.moveLeft();
                 }
-                else 
+                else
                 {
                     player.stopLeft();
                 }
@@ -122,6 +122,52 @@ int main()
                     player.stopRight();
                 }
             } // End WASD while playing
+            // Handle the LEVELING up state
+            if (state == State::LEVELING_UP)
+            {
+                // Update the player LEVELING UP
+                if (event.key.code == Keyboard::Num1)
+                {
+                    state = State::PLAYING;
+                }
+                if (event.key.code == Keyboard::Num2)
+                {
+                    state = State::PLAYING;
+                }
+                if (event.key.code == Keyboard::Num3)
+                {
+                    state = State::PLAYING;
+                }
+                if (event.key.code == Keyboard::Num4)
+                {
+                    state = State::PLAYING;
+                }
+                if (event.key.code == Keyboard::Num5)
+                {
+                    state = State::PLAYING;
+                }
+                if (event.key.code == Keyboard::Num6)
+                {
+                    state = State::PLAYING;
+                }
+                if (state == State::PLAYING)
+                {
+                    // Prepare the level
+                    arena.width = 500;
+                    arena.height = 500;
+                    arena.left = 0;
+                    arena.top = 0;
+
+                    // We will modify this line of code later
+                    int tileSize = 50;
+
+                    // Spawn the player in the middle of the arena
+                    player.spawn(arena, resolution, tileSize);
+
+                    // Reset clock so there isn't a frame jump
+                    clock.restart();
+                }
+            } // End LEVELING UP
         } // End game loop
     }
 
