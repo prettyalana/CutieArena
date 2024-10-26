@@ -56,11 +56,6 @@ int main()
                 // Quit the game when the window is closed
                 window.close();
 
-            if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Escape)
-            {
-                window.close();
-            }
-
             if (event.type == Event::KeyPressed)
             {
                 // Pause a game while playing
@@ -85,6 +80,48 @@ int main()
                 {
                 }
             } // End event polling
+            // Handle the player quitting
+            if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Escape)
+            {
+                window.close();
+            }
+            // Handle WASD while playing 
+            if (state == State::PLAYING)
+            {
+                // Handle the pressing and releasing of WASD keys
+                if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::W)
+                {
+                    player.moveUp();
+                }
+                else 
+                {
+                    player.stopUp();
+                }
+                if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::S)
+                {
+                    player.moveDown();
+                }
+                else 
+                {
+                    player.stopDown();
+                }
+                if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::A)
+                {
+                    player.moveLeft();
+                }
+                else 
+                {
+                    player.stopLeft();
+                }
+                if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::D)
+                {
+                    player.moveRight();
+                }
+                else
+                {
+                    player.stopRight();
+                }
+            } // End WASD while playing
         } // End game loop
     }
 

@@ -33,6 +33,6 @@
 *.tmp
 *.run
 
-# Xcode 
+# Xcode debugging
 *.dSYM
 
