@@ -36,3 +36,7 @@
 # Xcode debugging
 *.dSYM
 
+# Binary files
+# Ignores directories at the root level of my repository
+/bin/
+/UnBearableArena/

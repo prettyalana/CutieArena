@@ -9,6 +9,7 @@
                 "-fcolor-diagnostics",
                 "-fansi-escape-codes",
                 "-g",
+                "-std=c++11", 
                 "-I/opt/homebrew/include",  
                 "-L/opt/homebrew/lib",      
                 "${workspaceFolder}/UnBearableArena.cpp",

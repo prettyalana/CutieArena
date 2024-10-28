@@ -1,4 +1,6 @@
 #include "player.h"
+#include <iostream>
+#include <SFML/Graphics.hpp>
 
 Player::Player()
     : m_Speed(START_SPEED),
@@ -9,7 +11,7 @@ Player::Player()
 {
     // Associate a texture with the sprite
     // !!Watch this space!!
-    m_Texture.loadFromFile("/Users/alana/alana-fullstackdev/UnBearableArena/graphics/Bearsprites copy.png");
+    m_Texture.loadFromFile("/Users/alana/alana-fullstackdev/UnBearableArena/graphics/bear.png");
     m_Sprite.setTexture(m_Texture);
 
     // Set the origin of the sprite to the center for smooth rotation
@@ -186,7 +188,7 @@ void Player::increaseHealthLevel(int amount)
 {
     m_Health += amount;
     // But not beyond the maximum
-    if(m_Health > m_MaxHealth)
+    if (m_Health > m_MaxHealth)
     {
         m_Health = m_MaxHealth;
     }

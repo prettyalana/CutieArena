@@ -1,7 +1,9 @@
 #include <SFML/Graphics.hpp>
 #include "player.h"
-
+#include <iostream>
 using namespace sf;
+
+
 int main()
 {
     // The game will always be in one of the four states
@@ -205,6 +207,7 @@ int main()
 
                 // Draw the player 
                 window.draw(player.getSprite());
+                std::cout << "Drawing sprite at: (" << player.getCenter().x << ", " << player.getCenter().y << ")" << std::endl;
             }
             if (state == State::LEVELING_UP)
             {

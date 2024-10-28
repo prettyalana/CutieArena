@@ -11,7 +11,8 @@ all: $(TARGET)
 
 $(TARGET): $(CPP_FILES)
 	mkdir -p bin
-	g++ $(CPP_FILES) -I$(SFML_PATH)/include -o $(TARGET) -L$(SFML_PATH)/lib -lsfml-graphics -lsfml-window -lsfml-system -lsfml-audio -lsfml-network
+	g++ $(CPP_FILES) -I$(SFML_PATH)/include -o $(TARGET) -L$(SFML_PATH)/lib -lsfml-graphics -lsfml-window -lsfml-system -lsfml-audio -lsfml-network -std=c++11
 
+# Clean target
 clean:
 	rm -rf bin/*
