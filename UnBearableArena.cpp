@@ -193,8 +193,32 @@ int main()
                 Vector2f playerPosition(player.getCenter());
 
                 // Make the view center around the player
-                mainView.setCenter(Player.getCenter());
-            }// End updating scene
+                mainView.setCenter(player.getCenter());
+            } // End updating scene
+            // Draw the scene
+            if (state == State::PLAYING)
+            {
+                window.clear();
+
+                // Set the mainView to be displayed in the window and draw everything related to it
+                window.setView(mainView);
+
+                // Draw the player 
+                window.draw(player.getSprite());
+            }
+            if (state == State::LEVELING_UP)
+            {
+
+            }
+            if (state == State::PAUSED)
+            {
+
+            }
+            if (state == State::GAME_OVER)
+            {
+
+            }
+            window.display();
         } // End game loop
     }
 
