@@ -168,6 +168,33 @@ int main()
                     clock.restart();
                 }
             } // End LEVELING UP
+            // UPDATE THE FRAME 
+            if (state == State::PLAYING)
+            {
+                // Update the delta time
+                Time dt = clock.restart();
+
+                // Update the total game time
+                gameTimeTotal += dt;
+
+                // Make a fraction of 1 from the delta time 
+                float dtAsSeconds = dt.asSeconds();
+
+                // Where is the mouse pointer 
+                mouseScreenPosition = Mouse::getPosition();
+
+                // COnvert mouse position to world based coordinates of mainView
+                mouseWorldPosition = window.mapPixelToCoords(Mouse::getPosition(), mainView);
+
+                // Update the player
+                player.update(dtAsSeconds, Mouse::getPosition());
+
+                // Make a note of the players new position
+                Vector2f playerPosition(player.getCenter());
+
+                // Make the view center around the player
+                mainView.setCenter(Player.getCenter());
+            }// End updating scene
         } // End game loop
     }
 
