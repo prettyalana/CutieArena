@@ -39,7 +39,7 @@
 # Binary files
 # Ignores directories at the root level of my repository
 /bin/
-/UnBearableArena/
+/UnBearableArena
 
 # DS_STORE
 .DS_STORE
