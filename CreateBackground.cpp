@@ -12,6 +12,9 @@ int createBackground(VertexArray& rVA, IntRect arena)
     int worldHeight = arena.height / TILE_SIZE;
 
     // What type of primitive are we using?
+    rVA.setPrimitiveType(Quads);
+
+    // Set the size of the vertex array
     rVA.resize(worldWidth * worldHeight * VERTS_IN_QUAD);
 
     // Start at the beginning of the vertex array
