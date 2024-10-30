@@ -3,7 +3,6 @@
 #include <iostream>
 using namespace sf;
 
-
 int main()
 {
     // The game will always be in one of the four states
@@ -58,17 +57,19 @@ int main()
                 // Quit the game when the window is closed
                 window.close();
 
-            if (event.type == Event::KeyPressed)
+            if (event.type == sf::Event::KeyPressed)
             {
                 // Pause a game while playing
                 if (event.key.code == Keyboard::Return && state == State::PLAYING)
                 {
+                    std::cout << "Game is paused" << std::endl;
                     state = State::PAUSED;
                 }
 
                 // Restart while paused
                 else if (event.key.code == Keyboard::Return && state == State::PAUSED)
                 {
+                    std::cout << "Resumed gameplay" << std::endl;
                     state = State::PLAYING;
                     // Reset the clock so there isn't a frame jump
                     clock.restart();
@@ -91,39 +92,51 @@ int main()
             if (state == State::PLAYING)
             {
                 // Handle the pressing and releasing of WASD keys
-                if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::W)
+                if (event.type == sf::Event::KeyPressed)
                 {
-                    player.moveUp();
+                    if (event.key.code == sf::Keyboard::W)
+                    {
+                        std::cout << "W Pressed" << std::endl;
+                        player.moveUp();
+                    }
+                    if (event.key.code == sf::Keyboard::S)
+                    {
+                        std::cout << "S Pressed" << std::endl;
+                        player.moveDown();
+                    }
+                    if (event.key.code == sf::Keyboard::A)
+                    {
+                        std::cout << "A Pressed" << std::endl;
+                        player.moveLeft();
+                    }
+                    if (event.key.code == sf::Keyboard::D)
+                    {
+                        std::cout << "D Pressed" << std::endl;
+                        player.moveRight();
+                    }
                 }
-                else
+            } // End WASD while playing
+
+            // Handle key release
+            if (event.type == sf::Event::KeyReleased)
+            {
+                if (event.key.code == sf::Keyboard::W)
                 {
                     player.stopUp();
                 }
-                if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::S)
-                {
-                    player.moveDown();
-                }
-                else
+                else if (event.key.code == sf::Keyboard::S)
                 {
                     player.stopDown();
                 }
-                if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::A)
-                {
-                    player.moveLeft();
-                }
-                else
+                else if (event.key.code == sf::Keyboard::A)
                 {
                     player.stopLeft();
                 }
-                if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::D)
-                {
-                    player.moveRight();
-                }
-                else
+                else if (event.key.code == sf::Keyboard::D)
                 {
                     player.stopRight();
                 }
-            } // End WASD while playing
+            }
             // Handle the LEVELING up state
             if (state == State::LEVELING_UP)
             {
@@ -170,7 +183,7 @@ int main()
                     clock.restart();
                 }
             } // End LEVELING UP
-            // UPDATE THE FRAME 
+            // UPDATE THE FRAME
             if (state == State::PLAYING)
             {
                 // Update the delta time
@@ -179,10 +192,10 @@ int main()
                 // Update the total game time
                 gameTimeTotal += dt;
 
-                // Make a fraction of 1 from the delta time 
+                // Make a fraction of 1 from the delta time
                 float dtAsSeconds = dt.asSeconds();
 
-                // Where is the mouse pointer 
+                // Where is the mouse pointer
                 mouseScreenPosition = Mouse::getPosition();
 
                 // COnvert mouse position to world based coordinates of mainView
@@ -205,21 +218,18 @@ int main()
                 // Set the mainView to be displayed in the window and draw everything related to it
                 window.setView(mainView);
 
-                // Draw the player 
+                // Draw the player
                 window.draw(player.getSprite());
                 std::cout << "Drawing sprite at: (" << player.getCenter().x << ", " << player.getCenter().y << ")" << std::endl;
             }
             if (state == State::LEVELING_UP)
             {
-
             }
             if (state == State::PAUSED)
             {
-
             }
             if (state == State::GAME_OVER)
             {
-
             }
             window.display();
         } // End game loop
