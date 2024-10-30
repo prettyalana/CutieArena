@@ -19,5 +19,23 @@ int createBackground(VertexArray& rVA, IntRect arena)
 
     // Start at the beginning of the vertex array
     int currentVertex = 0;
+    for (int w = 0; w < worldWidth; w++)
+    {
+        for ( int h = 0; h < worldHeight; h++)
+        {
+            // Position each vertex in the current quad 
+            rVA[currentVertex + 0].position = Vector2f(w * TILE_SIZE, h * TILE_SIZE);
+
+            rVA[currentVertex + 1].position = Vector2f((w * TILE_SIZE) + TILE_SIZE, h + TILE_SIZE);
+
+            rVA[currentVertex + 2].position = Vector2f((w * TILE_SIZE) + TILE_SIZE, (h * TILE_SIZE) + TILE_SIZE);
+
+            rVA[currentVertex + 3].position = Vector2f((w * TILE_SIZE, (h * TILE_SIZE)) + TILE_SIZE);
+
+            // Position ready for the next four vertices 
+            currentVertex = currentVertex + VERTS_IN_QUAD;
+
+        }
+    }
     return TILE_SIZE;
 }
