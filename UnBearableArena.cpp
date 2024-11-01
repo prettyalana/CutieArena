@@ -1,5 +1,6 @@
 #include <SFML/Graphics.hpp>
 #include "player.h"
+#include "UnBearableArena.h"
 #include <iostream>
 using namespace sf;
 
@@ -43,6 +44,13 @@ int main()
 
     // The boundaries of the arena
     IntRect arena;
+
+    // Create the background
+    VertexArray background;
+
+    // Load the texture for our background vertex array
+    Texture textureBackground;
+    textureBackground.loadFromFile("/Users/alana/alana-fullstackdev/UnBearableArena/graphics/background_sheet.png");
 
     // The main game loop
     while (window.isOpen())
