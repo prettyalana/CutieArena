@@ -45,6 +45,23 @@ int createBackground(VertexArray& rVA, IntRect arena)
 
                 rVA[currentVertex + 3].texCoords = Vector2f(0, TILE_SIZE + TILE_TYPES * TILE_SIZE);
             }
+            else 
+            {
+                // Use a random floor texture 
+                srand((int)time(0) + h * w - h);
+
+                // Mud or grass mOrG
+                int mOrG = (rand() % TILE_TYPES);
+                
+                int verticalOffset = mOrG * TILE_SIZE;
+                rVA[currentVertex + 0].texCoords = Vector2f(0, 0 + verticalOffset);
+
+                rVA[currentVertex + 1].texCoords = Vector2f(TILE_SIZE, 0 + verticalOffset);
+
+                rVA[currentVertex + 2].texCoords = Vector2f(TILE_SIZE, TILE_SIZE + verticalOffset);
+
+                rVA[currentVertex + 3].texCoords = Vector2f(0, TILE_SIZE + verticalOffset);
+            }
 
             // Position ready for the next four vertices 
             currentVertex = currentVertex + VERTS_IN_QUAD;
