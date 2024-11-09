@@ -34,5 +34,23 @@ class Chom
     bool m_Alive;
 
     // Public prototypes go here
+    public:
+    // Handle when laser hits a chom
+    bool hit();
+
+    // Find out if the chom is alive
+    bool isAlive();
+
+    // Spawn a new chom
+    void spawn(float startX, float startY, int type, int seed);
+
+    // Return a rectangle that is the position in the world
+    FloatRect getPosition();
+
+    // Get a copy of the sprite to draw 
+    Sprite getSprite();
+
+    // Update the chom eaxh frame 
+    void update(float elapsedTime, Vector2f playerLocation);
 
 };
