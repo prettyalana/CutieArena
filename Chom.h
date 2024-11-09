@@ -10,8 +10,8 @@ class Chom
     const float CUTE_CHOM_SPEED = 20;
 
     // How tough is each chom bomb type?
-    const float CHARGER_CHOM_HEALTH = 5;
     const float BOUNCY_CHOM_HEALTH = 3;
+    const float CHARGER_CHOM_HEALTH = 5;
     const float CUTE_CHOM_HEALTH = 1;
 
     // Make each chom bomb vary its speed slightly 
@@ -25,7 +25,7 @@ class Chom
     Sprite m_Sprite;
 
     // How fast can this one run/crawl?
-    float m_speed;
+    float m_Speed;
 
     // How much health does it have?
     float m_Health;
