@@ -1,4 +1,4 @@
-#include "chom.h"
+#include "Chom.h"
 #include "TextureHolder.h"
 #include <cstdlib>
 #include <ctime>
