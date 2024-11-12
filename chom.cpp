@@ -32,7 +32,7 @@ void Chom::spawn(float startX, float startY, int type, int seed)
     srand((int)time(0) * seed);
 
     // Somewhere between 80 and 100
-    floar modifier = (rand() % (MAX_VARRIANCE)) + OFFSET;
+    float modifier = (rand() % (MAX_VARRIANCE)) + OFFSET;
 
     // Express this as a fraction of 1
     modifier /= 100; // Now equals between 0.7 and 1
@@ -49,3 +49,17 @@ void Chom::spawn(float startX, float startY, int type, int seed)
     m_Sprite.setPosition(m_Position);
 
 }
+
+bool Chom::hit()
+{
+    m_Health--;
+    if (m_Health < 0)
+    {
+        // dead
+        m_Alive = false;
+        return true;
+    }
+    // injured but not dead yet
+    return false;
+}
+
