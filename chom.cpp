@@ -63,3 +63,18 @@ bool Chom::hit()
     return false;
 }
 
+// getter functions
+bool Chom::isAlive()
+{
+    return m_Alive;
+}
+
+FloatRect Chom::getPosition()
+{
+    return m_Sprite.getGlobalBounds();
+}
+
+Sprite Chom::getSprite()
+{
+    return m_Sprite;
+}
