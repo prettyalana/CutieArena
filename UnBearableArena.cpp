@@ -1,11 +1,14 @@
 #include <SFML/Graphics.hpp>
 #include "player.h"
 #include "UnBearableArena.h"
+#include "TextureHolder.h"
 #include <iostream>
 using namespace sf;
 
 int main()
 {
+    // Here is the instance of TextureHolder 
+    TextureHolder holder;
     // The game will always be in one of the four states
     enum class State
     {
@@ -51,6 +54,16 @@ int main()
     // Load the texture for our background vertex array
     Texture textureBackground;
     textureBackground.loadFromFile("/Users/alana/alana-fullstackdev/UnBearableArena/graphics/background_sheet.png");
+
+    // Prepare for a horde of choms 
+    int numChoms;
+    int numChomsAlive;
+    Chom* choms = nullptr;
+
+    // Delete the previously allocated memory (if it exists)
+    delete[] choms;
+    choms = createHorde(numChoms, arena);
+    numChomsAlive = numChoms;
 
     // The main game loop
     while (window.isOpen())
@@ -217,6 +230,15 @@ int main()
 
                 // Make the view center around the player
                 mainView.setCenter(player.getCenter());
+                
+                // Loop through each chom and update them 
+                for (int i = 0; i < numChoms; i++)
+                {
+                    if (choms[i].isAlive())
+                    {
+                        choms[i].update(dt.asSeconds(), playerPosition);
+                    }
+                }
             } // End updating scene
             // Draw the scene
             if (state == State::PLAYING)
@@ -228,6 +250,12 @@ int main()
 
                 // Draw the background
                 window.draw(background, &textureBackground);
+
+                // Draw the choms
+                for (int i = 0; i < numChoms; int++)
+                {
+                    window.draw(choms[i].getSprite());
+                }
 
                 // Draw the player
                 window.draw(player.getSprite());
@@ -245,6 +273,6 @@ int main()
             window.display();
         } // End game loop
     }
-
+    delete[] choms;
     return 0;
 }
