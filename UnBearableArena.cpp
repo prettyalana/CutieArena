@@ -252,7 +252,7 @@ int main()
                 window.draw(background, &textureBackground);
 
                 // Draw the choms
-                for (int i = 0; i < numChoms; int++)
+                for (int i = 0; i < numChoms; i++)
                 {
                     window.draw(choms[i].getSprite());
                 }
