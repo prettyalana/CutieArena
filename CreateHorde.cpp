@@ -9,7 +9,7 @@ Chom *createHorde(int numChoms, IntRect arena)
     int minX = arena.left + 20;
     for (int i = 0; i < numChoms; i++)
     {
-        // Which side should the zombie spawn
+        // Which side should the chom spawn
         srand((int)time(0) * i);
         int side = (rand() % 4);
         float x, y;
@@ -41,7 +41,7 @@ Chom *createHorde(int numChoms, IntRect arena)
         srand((int)time(0) * i * 2);
         int type = (rand() % 3);
 
-        // spawn the new zombie into the array
+        // spawn the new chom into the array
         choms[i].spawn(x, y, type, i);
 
     }

@@ -84,7 +84,7 @@ void Chom::update(float elapsedTime, Vector2f playerLocation)
     float playerX = playerLocation.x;
     float playerY = playerLocation.y;
 
-    // Update the zombie position variables 
+    // Update the chom position variables 
     if (playerX > m_Position.x)
     {
         m_Position.x = m_Position.x + m_Speed * elapsedTime;
