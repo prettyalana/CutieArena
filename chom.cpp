@@ -2,10 +2,14 @@
 #include "TextureHolder.h"
 #include <cstdlib>
 #include <ctime>
+#include <iostream>
 using namespace std;
 
 void Chom::spawn(float startX, float startY, int type, int seed)
 {
+    // Debugging statement to print out spawn information
+    std::cout << "Spawning Chom at position (" << startX << ", " << startY << ") with type " << type << std::endl;
+
     switch (type)
     {
     case 0:
