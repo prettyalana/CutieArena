@@ -7,7 +7,7 @@ using namespace sf;
 
 int main()
 {
-    // Here is the instance of TextureHolder 
+    // Here is the instance of TextureHolder
     TextureHolder holder;
     // The game will always be in one of the four states
     enum class State
@@ -55,10 +55,10 @@ int main()
     Texture textureBackground;
     textureBackground.loadFromFile("/Users/alana/alana-fullstackdev/UnBearableArena/graphics/background_sheet.png");
 
-    // Prepare for a horde of choms 
+    // Prepare for a horde of choms
     int numChoms;
     int numChomsAlive;
-    Chom* choms = nullptr;
+    Chom *choms = nullptr;
 
     // Delete the previously allocated memory (if it exists)
     delete[] choms;
@@ -99,6 +99,13 @@ int main()
                 else if (event.key.code == Keyboard::Return && state == State::GAME_OVER)
                 {
                     state = State::LEVELING_UP;
+
+                    // Reset choms on game restart
+                    int minChoms = 1;                                        
+                    int maxChoms = 10;                                        
+                    numChoms = rand() % (maxChoms - minChoms + 1) + minChoms; 
+                    choms = createHorde(numChoms, arena);
+                    numChomsAlive = numChoms;
                 }
                 if (state == State::PLAYING)
                 {
@@ -189,8 +196,8 @@ int main()
                 if (state == State::PLAYING)
                 {
                     // Prepare the level
-                    arena.width = 500;
-                    arena.height = 500;
+                    arena.width = 1000;
+                    arena.height = 1000;
                     arena.left = 0;
                     arena.top = 0;
 
@@ -230,8 +237,8 @@ int main()
 
                 // Make the view center around the player
                 mainView.setCenter(player.getCenter());
-                
-                // Loop through each chom and update them 
+
+                // Loop through each chom and update them
                 for (int i = 0; i < numChoms; i++)
                 {
                     if (choms[i].isAlive())
